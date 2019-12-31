@@ -12,10 +12,10 @@ for d in /srv/rhdwp/www/*; do
 	echo "UPDATE ${dir}"
 	echo "${dir}: Pulling from remote"
 	git -C "${d}" pull -q
-	
+
 	# Restart
-	cd "${d}" && bash buildStack -f && cd "${wd}"
-	
+	cd "${d}" && ./buildStack -r && cd "${wd}"
+
 	# shuffle salts (bug in docker wordpress)
 	# docker-compose run --rm wp-cli config shuffle-salts
 done
