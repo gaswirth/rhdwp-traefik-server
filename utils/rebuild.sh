@@ -1,10 +1,9 @@
 #!/bin/bash
-
-## Rebuilds stacks with --force-recreate
-
 set -e
 
-wd=$(pwd)
+##
+## Rebuilds stacks with --force-recreate
+##
 
 for d in /srv/rhdwp/www/*; do
 	dir="${d##*/}"
@@ -14,7 +13,7 @@ for d in /srv/rhdwp/www/*; do
 	git -C "${d}" pull -q
 
 	# Restart
-	cd "${d}" && ./buildStack -r && cd "${wd}"
+	( cd "${d}" && ./buildStack -r )
 
 	# shuffle salts (bug in docker wordpress)
 	# docker-compose run --rm wp-cli config shuffle-salts

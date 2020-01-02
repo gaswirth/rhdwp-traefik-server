@@ -1,8 +1,9 @@
 #!/bin/bash
-
-## Rebuilds stacks without forcing container recreation (fast)
-
 set -e
+
+##
+## Rebuilds stacks without forcing container recreation (fast)
+##
 
 echo "Checking sudo freshness..."
 sudo echo "Done."
